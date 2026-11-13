@@ -1,0 +1,87 @@
+{
+  "version": 2,
+  "layer": "engine",
+  "description": "Universal Teams ASR artifacts for Chilean/neutral Spanish meetings. Framework-owned: overwritten on every upgrade. Project-specific vocabulary belongs in the domain overlay, never here.",
+  "confidenceLevels": {
+    "alta": "Deterministic correction. Applied by --fix.",
+    "media": "Context-dependent. Lint only; requires human confirmation.",
+    "baja": "Speculative or semantically lossy. Lint only; never auto-applied."
+  },
+  "rules": [
+    {
+      "id": "yeah_ya",
+      "pattern": "\\byeah\\b",
+      "flags": ["IGNORECASE"],
+      "suggest": "ya",
+      "confidence": "alta",
+      "reason": "Interjeccion: el ASR transcribe 'ya' como 'yeah'. Verificado: 15/15 ocurrencias correctas en Sprint 11."
+    },
+    {
+      "id": "logia_logica",
+      "pattern": "\\blogia\\b",
+      "flags": ["IGNORECASE"],
+      "suggest": "logica",
+      "confidence": "media",
+      "reason": "Termino tecnico: probable 'logica'."
+    },
+    {
+      "id": "choes_issues",
+      "pattern": "\\bchoes\\b",
+      "flags": ["IGNORECASE"],
+      "suggest": "issues",
+      "confidence": "media",
+      "reason": "Termino tecnico: probable 'issues'."
+    },
+    {
+      "id": "farewell_to_town",
+      "pattern": "\\bto\\s+town\\b",
+      "flags": ["IGNORECASE"],
+      "suggest": "chao",
+      "confidence": "media",
+      "reason": "Despedida: el ASR transcribe 'chao' como 'to town'. Solo valido en zona de cierre de reunion."
+    },
+    {
+      "id": "farewell_tocho",
+      "pattern": "\\btocho\\b",
+      "flags": ["IGNORECASE"],
+      "suggest": "chao chao",
+      "confidence": "media",
+      "reason": "Despedida por similitud fonetica. Solo valido en zona de cierre de reunion."
+    },
+    {
+      "id": "see_you_si_obvio",
+      "pattern": "\\bsee\\s+you\\b",
+      "flags": ["IGNORECASE"],
+      "suggest": "si, obvio",
+      "confidence": "baja",
+      "reason": "Salto semantico amplio: 'see you' puede ser literal. Requiere confirmacion."
+    },
+    {
+      "id": "book_bug",
+      "pattern": "\\bbook\\b",
+      "flags": ["IGNORECASE"],
+      "suggest": "bug",
+      "confidence": "baja",
+      "reason": "Ambiguo: 'book' tambien aparece como fragmento valido de otra palabra mal segmentada. Requiere confirmacion."
+    },
+    {
+      "id": "what_stars_number",
+      "pattern": "\\bwhat\\s+\\*{2,}\\??",
+      "flags": ["IGNORECASE"],
+      "suggest": "(numero ininteligible)",
+      "confidence": "baja",
+      "reason": "El ASR censura o alucina sobre un numero. El valor real debe recuperarse del audio."
+    }
+  ],
+  "goodbyeMarkers": [
+    "chao",
+    "chau",
+    "nos vemos",
+    "buen finde",
+    "buen fin de",
+    "que esten bien",
+    "gracias",
+    "hasta luego"
+  ],
+  "allowTerms": []
+}

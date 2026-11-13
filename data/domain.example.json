@@ -1,0 +1,100 @@
+{
+  "version": 2,
+  "layer": "domain",
+  "project": "Proyecto Exportacion (ejemplo)",
+  "description": "Project domain overlay. User-owned: NEVER overwritten by an upgrade. Extends and overrides engine-artifacts.json. This example is filled with vocabulary from a real export-logistics project; use it as a shape reference, not as a default.",
+  "sources": [
+    "qa/00-standards/rag-v1/glosario/",
+    "qa/00-standards/rag-v1/procesos/",
+    "qa/00-standards/ui-label-vocabulary.md"
+  ],
+  "rules": [
+    {
+      "id": "buging_booking",
+      "pattern": "\\bbuging\\b",
+      "flags": ["IGNORECASE"],
+      "suggest": "booking",
+      "confidence": "alta",
+      "reason": "Termino de dominio: reserva de espacio en nave. Verificado en Sprint 10."
+    },
+    {
+      "id": "stalking_stacking",
+      "pattern": "\\bstalking\\b",
+      "flags": ["IGNORECASE"],
+      "suggest": "stacking",
+      "confidence": "alta",
+      "reason": "Termino de dominio: ventana de recepcion de carga en puerto. Verificado en Sprint 10."
+    },
+    {
+      "id": "cuba_qa",
+      "pattern": "\\bcuba\\b",
+      "flags": ["IGNORECASE"],
+      "suggest": "QA",
+      "confidence": "alta",
+      "reason": "Sigla destruida por el ASR. Cambia el sentido de frases sobre estado de release ('no tenemos publicado en QA'). Verificado en Sprint 10."
+    },
+    {
+      "id": "ed_de_general_etd_general",
+      "pattern": "\\bed\\s+de\\s+general\\b",
+      "flags": ["IGNORECASE"],
+      "suggest": "ETD general",
+      "confidence": "alta",
+      "reason": "Sigla logistica (Estimated Time of Departure). Verificado en Sprint 10."
+    },
+    {
+      "id": "curacion_fria_colacion_fria",
+      "pattern": "\\bcuraci[oó]n\\s+fr[ií]a\\b",
+      "flags": ["IGNORECASE"],
+      "suggest": "colacion fria",
+      "confidence": "alta",
+      "reason": "Termino de dominio del modulo de servicio de alimentacion."
+    },
+    {
+      "id": "follios_folios",
+      "pattern": "\\bfollios\\b",
+      "flags": ["IGNORECASE"],
+      "suggest": "folios",
+      "confidence": "alta",
+      "reason": "Corrige la regresion observada en Sprint 11 L558: 'folios PT' se habia degradado a 'follios PT'."
+    }
+  ],
+  "peopleNote": "Personas ficticias. El overlay real de cada proyecto lleva los nombres de su equipo y NO se publica: vive en qa/00-standards/minutes/domain.json, que ningun upgrade toca.",
+  "people": [
+    {
+      "canonical": "Katia Rojas Vera",
+      "display": "Katia Rojas Vera",
+      "aliases": ["Catia Rojas Vera", "Catia Rojas", "Catia", "Katia"],
+      "role": "DEV",
+      "_demuestra": "variante de escritura: el ASR transcribe 'Catia' por 'Katia'"
+    },
+    {
+      "canonical": "Martin Nunez Saez",
+      "display": "Martín Núñez Sáez",
+      "aliases": ["Martin Nunez", "Martín N. Sáez", "Martin"],
+      "role": "PO",
+      "_demuestra": "restitucion de tildes: la transcripcion entrega los nombres sin diacriticos"
+    },
+    {
+      "canonical": "Ana Perez",
+      "display": "Ana Pérez",
+      "aliases": ["Ana"],
+      "role": "QA"
+    }
+  ],
+  "allowTerms": [
+    "booking",
+    "stacking",
+    "issue",
+    "issues",
+    "task",
+    "sprint",
+    "backlog",
+    "broker",
+    "detention"
+  ],
+  "glossary": [
+    { "term": "Folio PT", "definition": "Identificador de pallet terminado en el sistema de planta." },
+    { "term": "Letania", "definition": "Bloque de instrucciones de embarque parametrizado por Puerto Destino x Broker x Transporte." },
+    { "term": "EX/MI", "definition": "Tarja exportacion / Mercado Interno." }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "@keber/meeting-minutes",
+  "version": "0.3.0",
+  "description": "Turns raw Teams meeting transcripts into reviewable minutes. Cleans domain-term ASR corruption, detects transcription gaps, and proposes a traceability mapping between discussed topics and Azure DevOps work items for human confirmation.",
+  "keywords": [
+    "meeting-minutes",
+    "transcript",
+    "teams",
+    "azure-devops",
+    "traceability",
+    "asr",
+    "agent",
+    "skill"
+  ],
+  "license": "MIT",
+  "main": "scripts/index.js",
+  "bin": {
+    "meeting-minutes": "scripts/cli.js"
+  },
+  "scripts": {
+    "postinstall": "node scripts/init.js --skip-if-exists",
+    "init": "node scripts/cli.js init",
+    "upgrade": "node scripts/cli.js upgrade",
+    "test": "node --test tests/*.test.js && python -m unittest discover -s tests -p '*_test.py'"
+  },
+  "files": [
+    "skills/",
+    "templates/",
+    "data/",
+    "tgd/",
+    "scripts/",
+    "docs/",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "peerDependencies": {
+    "@keber/ado-qa": ">=1.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@keber/ado-qa": {
+      "optional": true
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/keber/meeting-minutes.git"
+  }
+}
