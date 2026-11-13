@@ -2,7 +2,7 @@
 
 > Turns a raw Teams meeting transcript into a reviewable minute, with a traceability
 > proposal against Azure DevOps work items.
-> Current version: **v0.1.0**
+> Current version: **v0.3.0**
 
 ---
 
