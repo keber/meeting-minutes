@@ -27,7 +27,7 @@
     "skills/",
     "templates/",
     "data/",
-    "tgd/",
+    "tgd/*.py",
     "scripts/",
     "docs/",
     "README.md",
